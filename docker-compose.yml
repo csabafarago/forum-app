@@ -1,0 +1,50 @@
+version: '3'
+services:
+  #PHP Service
+  forum_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: digitalocean.com/php
+    container_name: forum_app
+    restart: unless-stopped
+    tty: true
+    environment:
+      SERVICE_NAME: app
+      SERVICE_TAGS: dev
+    working_dir: /var/www
+    volumes:
+      - ./src/:/var/www
+      - ./Docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - forum_app-network
+  forum_webserver:
+    image: nginx:alpine
+    container_name: forum_webserver
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "8081:80"
+    volumes:
+      - ./src/:/var/www
+      - ./Docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - forum_app-network
+  forum_testdb:
+    image: mysql:5.7.22
+    tmpfs: /var/lib/mysql
+    container_name: forum_testdb
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "33061:3306"
+    environment:
+      MYSQL_DATABASE: laravel
+      MYSQL_ROOT_PASSWORD: secret
+      SERVICE_TAGS: dev
+      SERVICE_NAME: mysql
+    networks:
+      - forum_app-network
+networks:
+  forum_app-network:
+    driver: bridge
