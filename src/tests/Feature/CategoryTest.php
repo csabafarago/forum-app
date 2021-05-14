@@ -7,28 +7,25 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Tests\TestCase;
 
-class ThreadTest extends TestCase
+class CategoryTest extends TestCase
 {
     private $user = false;
 
-    public function test_new_thread_can_be_created()
+    public function test_new_category_can_be_created()
     {
         $this->withoutMiddleware();
 
         $this->user = User::factory()->create();
 
-        $response = $this->actingAs($this->user)->post('/threads', [
-            'title' => 'Test thread',
-            'category_id' => 1,
+        $response = $this->actingAs($this->user)->post('/categories', [
+            'name' => 'Test category',
         ]);
-
-        var_dump($response->getContent());
 
         $this->assertAuthenticated();
         $response->assertRedirect();
 
-        $this->assertDatabaseHas('threads', [
-            'title' => 'Test thread'
+        $this->assertDatabaseHas('categories', [
+            'name' => 'Test category'
         ]);
 
         $this->assertAuthenticated();

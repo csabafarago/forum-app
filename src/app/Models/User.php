@@ -40,4 +40,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function votes()
+    {
+        return $this->belongsToMany(UserPostVote::class,'user_post_vote','user_id','thread_post_id');
+    }
 }

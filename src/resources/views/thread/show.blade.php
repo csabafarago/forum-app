@@ -5,16 +5,31 @@
         </h2>
     </x-slot>
 
+    @php
+        if(Auth::check()){
+            $authenticated = 1;
+        } else {
+            $authenticated = 0;
+        }
+    @endphp
+
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 bg-white border-b border-gray-200">
                     <span class="container">
                         @forelse ($posts as $post)
-                            <p class="border-2 border-red-200 mb-4 p-2 rounded-lh bg-red-100 relative h-20">
+                            <p class="border-2 border-red-200 mb-4 p-2 rounded-lh bg-red-100 relative h-40">
                             {{ $post->post }}
                             <span class="absolute top-2 right-4">Posted by {{ $post->createdBy->name }}</span>
                             <span class="absolute top-8 right-4">Posted on {{ date('d-m-Y', strtotime($thread->created_at))  }}</span>
+                            <span class="absolute top-14 right-4">
+                                <vote-component
+                                    :authenticated="{{ $authenticated }}"
+                                    :post_id="{{ $post->id }}"
+                                    :csrf="{{ csrf_token() }}"
+                                ></vote-component>
+                            </span>
                         </p>
                         @empty
                             <p>

@@ -7,7 +7,7 @@ use App\Models\Category;
 use App\Models\Thread;
 use App\Models\ThreadPost;
 use App\Repositories\ThreadRepository;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Request;
 
 class ThreadController extends Controller
 {
@@ -18,9 +18,22 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $allThreads = Thread::paginate(2);
 
-        return view('thread.index', ['allThreads' => $allThreads]);
+        $categories = Category::all('id', 'name');
+
+        $default_selected = request('category_id','');
+
+        if(request()->has('category_id')){
+            $threads = Thread::where('category_id', request('category_id'))->paginate(2);
+        } else {
+            $threads = Thread::paginate(2);
+        }
+
+        return view('thread.index', [
+            'threads' => $threads->appends(Request::except('page')),
+            'categories' => $categories,
+            'default_selected' => $default_selected
+        ]);
     }
 
     /**
