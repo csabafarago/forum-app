@@ -19,15 +19,23 @@
                 <div class="p-6 bg-white border-b border-gray-200">
                     <span class="container">
                         @forelse ($posts as $post)
+                            <?php
+                            if(Auth::check() && $post->votes()->get()->contains('user_id',Auth::user()->id)){
+                                $voted = 1;
+                            } else {
+                                $voted = 0;
+                            }
+                            ?>
                             <p class="border-2 border-red-200 mb-4 p-2 rounded-lh bg-red-100 relative h-40">
                             {{ $post->post }}
                             <span class="absolute top-2 right-4">Posted by {{ $post->createdBy->name }}</span>
                             <span class="absolute top-8 right-4">Posted on {{ date('d-m-Y', strtotime($thread->created_at))  }}</span>
                             <span class="absolute top-14 right-4">
                                 <vote-component
+                                    :votes_count="{{ $post->votes()->count() }}"
+                                    :voted="{{ $voted }}"
                                     :authenticated="{{ $authenticated }}"
                                     :post_id="{{ $post->id }}"
-                                    :csrf="{{ csrf_token() }}"
                                 ></vote-component>
                             </span>
                         </p>

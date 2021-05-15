@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class UserPostVote extends Model
 {
     use HasFactory;
+
+    protected $table = 'user_post_vote';
 }

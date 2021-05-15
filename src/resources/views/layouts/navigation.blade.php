@@ -28,6 +28,12 @@
                             {{ __('Add category') }}
                         </x-nav-link>
                     </div>
+                @else
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('register')" :active="request()->routeIs('register')">
+                            {{ __('Register') }}
+                        </x-nav-link>
+                    </div>
                 @endif
             </div>
 

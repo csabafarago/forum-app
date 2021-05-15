@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Thread;
 use App\Models\ThreadPost;
 use App\Repositories\ThreadRepository;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Request;
 
 class ThreadController extends Controller
@@ -18,7 +19,6 @@ class ThreadController extends Controller
      */
     public function index()
     {
-
         $categories = Category::all('id', 'name');
 
         $default_selected = request('category_id','');
@@ -78,11 +78,11 @@ class ThreadController extends Controller
     {
         $thread = Thread::with('category')->findOrFail($id);
 
-        $posts = ThreadPost::where('thread_id',$id)->get();
+        $posts = ThreadPost::where('thread_id',$id)->with('votes');
 
         return view('thread.show', [
             'thread' => $thread,
-            'posts' => $posts,
+            'posts' => $posts->get(),
         ]);
     }
 
