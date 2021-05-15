@@ -19,11 +19,11 @@ class ThreadController extends Controller
      */
     public function index()
     {
-        $categories = Category::all('id', 'name');
+        $categories = Category::all('id', 'name')->toArray();
 
-        $default_selected = request('category_id','');
+        $default_selected = request('category_id','0');
 
-        if(request()->has('category_id')){
+        if(request()->has('category_id') && request('category_id') !== '0'){
             $threads = Thread::where('category_id', request('category_id'))->paginate(2);
         } else {
             $threads = Thread::paginate(2);

@@ -43,8 +43,6 @@ X
 +src/app/Http/Requests/Auth/LoginRequest.php,b/3/b3039fca15ff27bb268d2407bb4e932ee06d6bc0
 _
 /src/app/Http/Requests/CreateCategoryRequest.php,9/9/99ae4597be6d304257b2b1aff79468640b3fda8b
-]
--src/app/Http/Requests/CreateThreadRequest.php,3/b/3b1cf6d50d8fb2c9770db9ec6471f17fad0ff985
 G
 src/app/Http/Kernel.php,0/c/0cda06a49cc8978d061fd43d761722c09c9e6a18
 K
@@ -195,8 +193,6 @@ P
  src/storage/framework/.gitignore,f/6/f6129ed2de0705d2100fd6de6547ef7f3a6a7d77
 K
 src/storage/logs/.gitignore,6/0/6096b4925efa5fb78cadb2ab28f2d55435328f2a
-X
-(src/tests/Feature/AuthenticationTest.php,1/9/198e3c3dd0189832fd3c692cd56adb31f328bc5c
 [
 +src/tests/Feature/EmailVerificationTest.php,5/7/5787b2c96b073aa0930be6bc1d74f5264d5d2830
 Q
@@ -205,8 +201,6 @@ Q
 .src/tests/Feature/PasswordConfirmationTest.php,4/c/4c8ce679a6fb37650290f0209bfb942beadbc73d
 W
 'src/tests/Feature/PasswordResetTest.php,e/1/e1e434b6866a54125d21211b304ba42189afe169
-N
-src/tests/Unit/ExampleTest.php,1/3/132d4ec44fe2a3fc75851b9abbb831f3206f6309
 P
  src/tests/CreatesApplication.php,e/9/e92e7d116cb98cfa3e0b08bd6bdf42b6024eeedc
 F
@@ -246,8 +240,6 @@ V
 &src/database/factories/UserFactory.php,e/d/edcf64c2e5d6ad1240aa89a1cbb23fa80507c687
 B
 docker-compose.yml,3/5/35b8c13cf2eb2a194eada000eb310d65aed53b2a
-a
-1src/app/Http/Requests/CreateThreadPostRequest.php,4/6/46818e999aacc86680f107f85caa1389661e4731
 A
 src/testrunner.sh,e/b/eb296260c7e1a0d6488d33102717d0c0c01efff0
 [
@@ -264,8 +256,6 @@ I
 src/resources/css/app.css,b/5/b56e32a3367f95c8ca0e0cd8c90b932171e4fa51
 W
 'src/app/Http/Controllers/Controller.php,5/7/57e6f23b73abf743746d8bc52eaac5004db2c9c0
-w
-Gsrc/database/migrations/2021_05_13_063549_create_thread_posts_table.php,8/5/853b129dd4bae09c3809e86a26c4b1c769733b87
 r
 Bsrc/database/migrations/2021_05_13_063334_create_threads_table.php,2/f/2f4f35e0b815b920fb794e4a46bbac729f4ce6ac
 T
@@ -282,10 +272,6 @@ Y
 )src/resources/views/layouts/app.blade.php,0/3/033092cab7283f717aaf8f4dd334ae6aa785740b
 R
 "src/tests/Feature/CategoryTest.php,0/7/073b7ae75b393b4a9a293902a41708a3d2ff648f
-T
-$src/tests/Feature/ThreadPostTest.php,7/8/7872e22497bbf11ed74a0d7633f96b32dcff38eb
-P
- src/tests/Feature/ThreadTest.php,9/a/9adf4803385cd0376348c9f94bab22f91741cccf
 A
 src/composer.json,8/8/88ffa3d7ba654ffaca8f1b3b545e53d70a02f030
 A

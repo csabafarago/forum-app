@@ -12,6 +12,7 @@ class VoteController extends Controller
         $check = auth()->user()->votes()->toggle($threadPost);
 
         return response()->json([
+            'check' => $check,
             'result' => true,
             'post_id' => $threadPost->id,
             'user_id' => Auth::user()->id,

@@ -17,13 +17,10 @@ class ThreadPostTest extends TestCase
 
         $this->user = User::factory()->create();
 
-        $response = $this->actingAs($this->user)->post('/thead-post', [
+        $response = $this->actingAs($this->user)->post('/thread-post', [
             'post' => 'Test post',
             'thread_id' => 1,
         ]);
-
-        $this->assertAuthenticated();
-        $response->assertRedirect();
 
         $this->assertDatabaseHas('thread_posts', [
             'post' => 'Test post'

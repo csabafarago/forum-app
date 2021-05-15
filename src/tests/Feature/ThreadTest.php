@@ -22,16 +22,14 @@ class ThreadTest extends TestCase
             'category_id' => 1,
         ]);
 
-        var_dump($response->getContent());
-
-        $this->assertAuthenticated();
-        $response->assertRedirect();
-
         $this->assertDatabaseHas('threads', [
             'title' => 'Test thread'
         ]);
 
-        $this->assertAuthenticated();
         $response->assertRedirect(RouteServiceProvider::HOME);
+
+        $this->assertAuthenticated();
+
+
     }
 }

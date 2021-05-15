@@ -1,6 +1,6 @@
 <template>
     <div class="container">
-        <select v-if="options" v-model="selected" @change="onChange($event)">
+        Filter by category: <select v-if="options" v-model="selected" @change="onChange($event)">
             <option v-for="option in options" v-bind:value="option.id">
                 {{ option.name }}
             </option>
@@ -15,14 +15,14 @@
                 type: Array,
                 required: true
             },
-            // selected: {
-            //     type: String,
-            //     required: false
-            // }
+            default_selected: {
+                type: Number,
+                required: false
+            }
         },
         data: function () {
             return {
-                selected: ''
+                selected: this.default_selected
             }
         },
         methods: {
