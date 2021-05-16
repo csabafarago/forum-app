@@ -12,7 +12,7 @@ Simple forum application to create threads, posts and allow the signed in users 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-Docker should be installed localy. For testing a separate DB service is pre configured.
+Docker should be installed locally. For testing a separate DB service is pre configured.
 
 ### Prerequisites
 
